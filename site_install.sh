@@ -20,9 +20,12 @@ rm -Rf CHANGELOG.txt INSTALL.sqlite.txt COPYRIGHT.txt INSTALL.mysql.txt INSTALL.
 
 drush en contextual field_ui file image list menu number openid options taxonomy -y
 
-drush dl admin rubik tao devel views ctools panels adaptivetheme
-drush en admin devel views views_ui ctools -y
+drush dl admin rubik tao devel views ctools panels omega omega_tools markdown libraries less
+drush en admin devel views views_ui ctools omega_tools markdown libraries less -y
 
-drush vset admin_theme adaptivetheme_admin
+mkdir sites/all/libraries
 
-cp -R sites/all/themes/adaptivetheme/at_subtheme/ sites/all/themes/$site_name
+drush vset admin_theme rubik
+
+read -p "What would you like to name your omega subtheme: " subtheme
+drush omega-subtheme "$subtheme"
